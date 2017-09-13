@@ -7,6 +7,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.bridgelabz.hibernateutil.HibernateUtil;
+import com.bridgelabz.hibernateutil.QueryUtil;
 import com.bridgelabz.modal.UserDetails;
 
 public class userDTO {
@@ -26,7 +27,7 @@ public class userDTO {
 		SessionFactory factory = HibernateUtil.getFactory();
 		Session session = factory.openSession();
 		Transaction transaction = session.getTransaction();
-		Query query = session.createQuery("select user from UserDetails user where userEmail = :email");
+		Query query = session.createQuery(QueryUtil.GET_LOGIN_AUTHENTICATION);
 		query.setString("email", objUserDetails.getUserEmail());
 		UserDetails userDetails = (UserDetails) query.uniqueResult();
 		

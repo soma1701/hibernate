@@ -54,7 +54,12 @@ public class Processor {
 			HttpSession session=request.getSession();
 			session.setAttribute("userName",objUserDetails.getUserName());
 			session.setAttribute("userId",objUserDetails.getUserId());
-			response.sendRedirect("HomePage.jsp");
+			try {
+				response.sendRedirect("HomePage.jsp");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		} 
 				
 			
@@ -68,4 +73,4 @@ public class Processor {
 	}
 	
 
-}
+
