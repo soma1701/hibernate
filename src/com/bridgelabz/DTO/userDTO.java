@@ -27,8 +27,10 @@ public class userDTO {
 		SessionFactory factory = HibernateUtil.getFactory();
 		Session session = factory.openSession();
 		Transaction transaction = session.getTransaction();
+		
 		Query query = session.createQuery(QueryUtil.GET_LOGIN_AUTHENTICATION);
-		query.setString("email", objUserDetails.getUserEmail());
+		query.setString("userEmail", objUserDetails.getUserEmail());
+		query.setString("userPassword", objUserDetails.getUserPassword());
 		UserDetails userDetails = (UserDetails) query.uniqueResult();
 		
 		return userDetails;
